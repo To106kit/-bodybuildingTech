@@ -1,0 +1,23 @@
+@startuml
+left to right direction
+' actor
+actor trainee
+actor M5stickCPlus
+actor PC
+' usecase
+package training {
+    usecase UC_train1 as "ベンチプレス"
+    usecase UC_train2 as "スクワット"
+    usecase UC_train3 as "デッドリフト"
+}
+usecase UC2 as "カウントする"
+
+trainee --> UC_train1
+trainee --> UC_train2
+trainee --> UC_train3
+UC_train1 --> M5stickCPlus
+UC_train2 --> M5stickCPlus
+UC_train3 --> M5stickCPlus
+M5stickCPlus --> UC2
+UC2 --> PC
+@enduml
