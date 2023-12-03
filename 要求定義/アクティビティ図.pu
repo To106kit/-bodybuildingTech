@@ -2,22 +2,35 @@
 left to right direction
 ' actor
 actor trainee
-actor M5stickCPlus
-actor PC
+actor M5stickCPlusマイコン
+actor M5stickCPlus画面
+actor pc_desktop
 ' usecase
 package training {
-    usecase UC_train1 as "ベンチプレス"
-    usecase UC_train2 as "スクワット"
-    usecase UC_train3 as "デッドリフト"
+    usecase UC_train1 as "ベンチプレスをする"
+    usecase UC_train2 as "スクワットをする"
+    usecase UC_train3 as "デッドリフトをする"
 }
 usecase UC2 as "カウントする"
+usecase UC3 as "電源を起動する"
+usecase UC4 as "画面表示する"
+usecase UC5 as "カウント結果を送信する"
+usecase UC6 as "回数を確認する"
 
 trainee --> UC_train1
 trainee --> UC_train2
 trainee --> UC_train3
-UC_train1 --> M5stickCPlus
-UC_train2 --> M5stickCPlus
-UC_train3 --> M5stickCPlus
-M5stickCPlus --> UC2
-UC2 --> PC
+UC_train1 --> M5stickCPlusマイコン
+UC_train2 --> M5stickCPlusマイコン
+UC_train3 --> M5stickCPlusマイコン
+M5stickCPlusマイコン --> UC2
+UC2 --> M5stickCPlusマイコン
+trainee -> UC3
+UC3 -> M5stickCPlusマイコン
+M5stickCPlusマイコン -> UC4
+UC4 -> M5stickCPlus画面
+M5stickCPlusマイコン -> UC5
+UC5 -> pc_desktop
+trainee -> UC6
+UC6 -> M5stickCPlus画面
 @enduml
